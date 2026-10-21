@@ -1,0 +1,12 @@
+{
+  "berita": [{"id":1,"judul":"Selamat Datang di Portal Kampus","slug":"selamat-datang-di-portal-kampus","ringkasan":"Contoh berita untuk menguji API kampus.","isi":"Ini adalah konten contoh. Ganti dengan berita resmi kampus Anda.","gambar_url":null,"penulis":"Admin Kampus","diterbitkan_pada":"2026-10-21 00:00:00"}],
+  "fakultas": [
+    {"id":1,"nama":"Fakultas Ilmu Sosial","slug":"fakultas-ilmu-sosial","deskripsi":"Contoh data fakultas. Ganti dengan informasi resmi kampus Anda.","dekan":"Nama Dekan","website_url":null},
+    {"id":2,"nama":"Fakultas Teknik","slug":"fakultas-teknik","deskripsi":"Contoh data fakultas. Ganti dengan informasi resmi kampus Anda.","dekan":"Nama Dekan","website_url":null}
+  ],
+  "program-studi": [
+    {"id":1,"fakultas_id":1,"nama_fakultas":"Fakultas Ilmu Sosial","nama":"Administrasi Publik","slug":"administrasi-publik","jenjang":"S1","akreditasi":"Baik","deskripsi":"Contoh data program studi. Ganti dengan informasi resmi kampus Anda."},
+    {"id":2,"fakultas_id":2,"nama_fakultas":"Fakultas Teknik","nama":"Teknik Informatika","slug":"teknik-informatika","jenjang":"S1","akreditasi":"Baik","deskripsi":"Contoh data program studi. Ganti dengan informasi resmi kampus Anda."}
+  ],
+  "pengumuman": [{"id":1,"judul":"Informasi Penerimaan Mahasiswa Baru","slug":"informasi-penerimaan-mahasiswa-baru","ringkasan":"Contoh pengumuman untuk menguji API kampus.","isi":"Ini adalah konten contoh. Ganti dengan informasi resmi kampus Anda.","lampiran_url":null,"diterbitkan_pada":"2026-10-21 00:00:00","berlaku_sampai":null}]
+}
