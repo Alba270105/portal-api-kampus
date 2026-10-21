@@ -70,11 +70,14 @@
     .hero-side .text-link { margin-top: 15px; color: #f2d69f; }
     .highlights { position: relative; z-index: 1; margin-top: -1px; color: #fff; background: #154a43; }
     .highlight-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
-    .highlight { display: flex; min-width: 0; min-height: 91px; align-items: center; gap: 13px; padding: 18px 20px; border-right: 1px solid #ffffff23; }
+    .highlight { display: flex; min-width: 0; min-height: 91px; align-items: center; gap: 13px; padding: 18px 20px; border-right: 1px solid #ffffff23; transition: background .18s ease; }
+    .highlight:hover { background: #ffffff0b; }
     .highlight:first-child { border-left: 1px solid #ffffff23; }
-    .highlight-icon { display: grid; width: 39px; height: 39px; flex: 0 0 auto; place-items: center; border: 1px solid #e8ba6470; border-radius: 50%; color: var(--gold); }
-    .highlight strong { display: block; font-family: Georgia, "Times New Roman", serif; font-size: 19px; font-weight: 600; }
-    .highlight span { display: block; margin-top: 4px; color: #d7e3dc; font-size: 10px; letter-spacing: .06em; text-transform: uppercase; }
+    .highlight-icon { display: grid; width: 42px; height: 42px; flex: 0 0 auto; place-items: center; border: 1px solid #e8ba6480; border-radius: 50%; color: var(--gold); background: #e8ba6410; }
+    .highlight-icon svg { display: block; width: 20px; height: 20px; }
+    .highlight-copy { display: block; min-width: 0; }
+    .highlight-copy strong { display: block; font-family: Georgia, "Times New Roman", serif; font-size: 19px; font-weight: 600; line-height: 1.15; }
+    .highlight-copy > span { display: block; margin-top: 5px; color: #d7e3dc; font-size: 10px; letter-spacing: .06em; line-height: 1.3; text-transform: uppercase; }
     section.content-section { padding-block: 76px; }
     .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 22px; margin-bottom: 27px; }
     .section-heading .kicker { color: var(--green); }
@@ -87,7 +90,9 @@
     .news-art::after { right: 23px; bottom: -116px; width: 200px; height: 180px; transform: rotate(18deg); border: 1px solid #ffffff48; border-radius: 45% 45% 0 0; background: #0d263942; }
     .news-art.art-two { background: linear-gradient(140deg, #5b5039, #b28a48); }
     .news-art.art-three { background: linear-gradient(140deg, #163b4f, #4f7356); }
-    .news-art-label { position: relative; z-index: 1; padding: 7px 10px; border: 1px solid #ffffff70; background: #0d263982; font-size: 9px; font-weight: 750; letter-spacing: .12em; text-transform: uppercase; }
+    .news-art-mark { position: absolute; top: 50%; left: 50%; z-index: 1; display: grid; width: 58px; height: 58px; place-items: center; transform: translate(-50%, -50%); border: 1px solid #ffffff70; border-radius: 50%; color: #fff; background: #ffffff17; }
+    .news-art-mark svg { width: 27px; height: 27px; }
+    .news-art-label { position: relative; z-index: 1; max-width: 100%; padding: 7px 10px; border: 1px solid #ffffff70; background: #0d2639b8; font-size: 9px; font-weight: 750; letter-spacing: .1em; line-height: 1.4; text-transform: uppercase; }
     .news-body { padding: 19px; }
     .news-meta { color: #73808b; font-size: 10px; font-weight: 650; letter-spacing: .07em; text-transform: uppercase; }
     .news-body h3 { margin: 10px 0 9px; color: var(--ink); font-family: Georgia, "Times New Roman", serif; font-size: 20px; font-weight: 600; line-height: 1.25; }
@@ -97,7 +102,10 @@
     .facts { background: var(--paper); }
     .facts-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
     .fact-card { min-height: 162px; padding: 22px; border: 1px solid #e4e9e3; background: #fff; }
-    .fact-index { color: #a58045; font-family: Georgia, "Times New Roman", serif; font-size: 27px; }
+    .fact-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .fact-index { color: #a58045; font-family: Georgia, "Times New Roman", serif; font-size: 25px; line-height: 1; }
+    .fact-icon { display: grid; width: 36px; height: 36px; flex: 0 0 auto; place-items: center; border: 1px solid #e8ba6470; border-radius: 50%; color: #9b773f; background: #fbf7ee; }
+    .fact-icon svg { display: block; width: 18px; height: 18px; }
     .fact-card h3 { margin: 10px 0 6px; color: var(--ink); font-family: Georgia, "Times New Roman", serif; font-size: 18px; }
     .fact-card p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.6; }
     .fact-card .fact-meta { margin-bottom: 8px; color: #a58045; font-size: 10px; font-weight: 750; letter-spacing: .08em; text-transform: uppercase; }
@@ -145,10 +153,11 @@
       .hero h1 { font-size: 43px; }
       .hero p { font-size: 14px; }
       .highlight { min-height: 78px; padding: 13px 10px; gap: 9px; }
-      .highlight-icon { width: 33px; height: 33px; }
-      .highlight strong { font-size: 17px; }
-      .highlight:last-child strong { font-size: 12px; }
-      .highlight span { font-size: 9px; }
+      .highlight-icon { width: 36px; height: 36px; }
+      .highlight-icon svg { width: 18px; height: 18px; }
+      .highlight-copy strong { font-size: 17px; }
+      .highlight:last-child .highlight-copy strong { font-size: 12px; }
+      .highlight-copy > span { font-size: 9px; }
       .section-heading { align-items: start; flex-direction: column; }
       .news-grid { grid-template-columns: 1fr; }
       .news-art { min-height: 145px; }
@@ -237,19 +246,19 @@
       <div class="container highlight-grid">
         <a class="highlight" href="#berita">
           <span class="highlight-icon" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M5 4.75h14v15H5zM8 8h8M8 11.5h8M8 15h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <span><strong>Berita</strong><span>Kabar kampus</span></span>
+          <span class="highlight-copy"><strong>Berita</strong><span>Kabar kampus</span></span>
         </a>
         <a class="highlight" href="#pendidikan">
           <span class="highlight-icon" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M3.5 20h17M5.5 20V8l6.5-4 6.5 4v12M9 20v-5h6v5M9 10h.01M15 10h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <span><strong>Fakultas</strong><span>Temukan bidang ilmu</span></span>
+          <span class="highlight-copy"><strong>Fakultas</strong><span>Temukan bidang ilmu</span></span>
         </a>
         <a class="highlight" href="#mahasiswa">
           <span class="highlight-icon" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="m3 9 9-5 9 5-9 5-9-5ZM6 11v5c3.5 3 8.5 3 12 0v-5M21 9v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <span><strong>Mahasiswa</strong><span>Informasi akademik</span></span>
+          <span class="highlight-copy"><strong>Mahasiswa</strong><span>Informasi akademik</span></span>
         </a>
         <a class="highlight" href="#penerimaan">
           <span class="highlight-icon" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M6 4.5h12v15H6zM9 8h6M9 11.5h6M9 15h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <span><strong>Pengumuman</strong><span>Info penting</span></span>
+          <span class="highlight-copy"><strong>Pengumuman</strong><span>Info penting</span></span>
         </a>
       </div>
     </section>
@@ -274,15 +283,24 @@
         </div>
         <div class="news-grid">
           <article class="news-card">
-            <div class="news-art art-one"><span class="news-art-label">Wisuda · 23 September 2026</span></div>
+            <div class="news-art art-one">
+              <span class="news-art-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 4.75h14v15H5zM8 8h8M8 11.5h8M8 15h5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="news-art-label">Wisuda · 23 September 2026</span>
+            </div>
             <div class="news-body"><div class="news-meta">Informasi universitas</div><h3>Jadwal Pengambilan Toga, Gladi Resik, dan Pembagian Nama Wisudawan Angkatan XXXIX</h3><p>Informasi wisuda terbaru yang diumumkan Universitas Malikussaleh.</p></div>
           </article>
           <article class="news-card">
-            <div class="news-art art-two"><span class="news-art-label">Beasiswa · 9 September 2026</span></div>
+            <div class="news-art art-two">
+              <span class="news-art-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 4.75h14v15H5zM8 8h8M8 11.5h8M8 15h5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="news-art-label">Beasiswa · 9 September 2026</span>
+            </div>
             <div class="news-body"><div class="news-meta">Informasi mahasiswa</div><h3>Penerima Beasiswa KIP Kuliah dan Beasiswa ADik Mahasiswa Baru Tahun 2026</h3><p>Pengumuman penerima beasiswa mahasiswa baru tahun 2026.</p></div>
           </article>
           <article class="news-card">
-            <div class="news-art art-three"><span class="news-art-label">Wisuda · 27 Agustus 2026</span></div>
+            <div class="news-art art-three">
+              <span class="news-art-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 4.75h14v15H5zM8 8h8M8 11.5h8M8 15h5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="news-art-label">Wisuda · 27 Agustus 2026</span>
+            </div>
             <div class="news-body"><div class="news-meta">Informasi universitas</div><h3>Pendaftaran Wisuda Angkatan XXXIX</h3><p>Informasi pendaftaran wisuda angkatan XXXIX Universitas Malikussaleh.</p></div>
           </article>
         </div>
@@ -296,12 +314,12 @@
           <a class="text-link" href="#mahasiswa">Informasi mahasiswa <span aria-hidden="true">→</span></a>
         </div>
         <div class="facts-grid">
-          <article class="fact-card"><span class="fact-index">01</span><h3>Fakultas Teknik</h3><p>Fakultas di lingkungan Universitas Malikussaleh.</p></article>
-          <article class="fact-card"><span class="fact-index">02</span><h3>Fakultas Ekonomi</h3><p>Fakultas di lingkungan Universitas Malikussaleh.</p></article>
-          <article class="fact-card"><span class="fact-index">03</span><h3>Fakultas Pertanian</h3><p>Fakultas di lingkungan Universitas Malikussaleh.</p></article>
-          <article class="fact-card"><span class="fact-index">04</span><h3>Fakultas Hukum</h3><p>Fakultas di lingkungan Universitas Malikussaleh.</p></article>
-          <article class="fact-card"><span class="fact-index">05</span><h3>Fakultas Kedokteran</h3><p>Fakultas di lingkungan Universitas Malikussaleh.</p></article>
-          <article class="fact-card"><span class="fact-index">06</span><h3>Program Pendidikan</h3><p>Kenali informasi program pendidikan dan kalender akademik.</p></article>
+          <article class="fact-card"><div class="fact-top"><span class="fact-index">01</span><span class="fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M3.5 20h17M5.5 20V8l6.5-4 6.5 4v12M9 20v-5h6v5M9 10h.01M15 10h.01" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><h3>Fakultas Teknik</h3><p>Fakultas di lingkungan Universitas Malikussaleh.</p></article>
+          <article class="fact-card"><div class="fact-top"><span class="fact-index">02</span><span class="fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M3.5 20h17M5.5 8l6.5-4 6.5 4M7 10h10M8 10v7m4-7v7m4-7v7M6 20v-3h12v3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><h3>Fakultas Ekonomi</h3><p>Fakultas di lingkungan Universitas Malikussaleh.</p></article>
+          <article class="fact-card"><div class="fact-top"><span class="fact-index">03</span><span class="fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21V11m0 4c-4.5 0-7-2.6-7-7 4.5 0 7 2.6 7 7Zm0-2c0-4.5 2.6-7 7-7 0 4.5-2.6 7-7 7Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><h3>Fakultas Pertanian</h3><p>Fakultas di lingkungan Universitas Malikussaleh.</p></article>
+          <article class="fact-card"><div class="fact-top"><span class="fact-index">04</span><span class="fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3 19 6v5c0 4.8-3 8-7 10-4-2-7-5.2-7-10V6l7-3Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><h3>Fakultas Hukum</h3><p>Fakultas di lingkungan Universitas Malikussaleh.</p></article>
+          <article class="fact-card"><div class="fact-top"><span class="fact-index">05</span><span class="fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M9 3h6v5h5v6h-5v7H9v-7H4V8h5V3Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span></div><h3>Fakultas Kedokteran</h3><p>Fakultas di lingkungan Universitas Malikussaleh.</p></article>
+          <article class="fact-card"><div class="fact-top"><span class="fact-index">06</span><span class="fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="m3 9 9-5 9 5-9 5-9-5ZM6 11v5c3.5 3 8.5 3 12 0v-5M21 9v6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><h3>Program Pendidikan</h3><p>Kenali informasi program pendidikan dan kalender akademik.</p></article>
         </div>
       </div>
     </section>
