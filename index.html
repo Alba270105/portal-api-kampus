@@ -100,6 +100,7 @@
     .fact-index { color: #a58045; font-family: Georgia, "Times New Roman", serif; font-size: 27px; }
     .fact-card h3 { margin: 10px 0 6px; color: var(--ink); font-family: Georgia, "Times New Roman", serif; font-size: 18px; }
     .fact-card p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.6; }
+    .fact-card .fact-meta { margin-bottom: 8px; color: #a58045; font-size: 10px; font-weight: 750; letter-spacing: .08em; text-transform: uppercase; }
     .api-note { margin-top: 26px; padding: 17px 19px; border-left: 3px solid var(--gold); color: #586671; background: #fff; font-size: 12px; line-height: 1.7; }
     .api-note a { color: var(--green); font-weight: 700; }
     .cta { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 22px; padding: 33px; color: #fff; background: var(--navy); }
@@ -175,7 +176,7 @@
       <div class="utility-right">
         <a href="#fakultas">Akademik</a>
         <a href="#berita">Berita</a>
-        <a href="api/pengumuman">Pengumuman</a>
+        <a href="#pengumuman">Pengumuman</a>
       </div>
     </div>
   </div>
@@ -189,7 +190,7 @@
           <span class="brand-subtitle">ACEH UTARA · INDONESIA</span>
         </span>
       </a>
-      <a class="search" href="api/berita" aria-label="Jelajahi informasi kampus">
+      <a class="search" href="#berita" aria-label="Jelajahi informasi kampus">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8" stroke="currentColor" stroke-width="1.7"/><path d="m16 16 4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
         <span>Jelajahi informasi kampus</span>
       </a>
@@ -205,7 +206,7 @@
           <a href="#tentang">Tentang</a>
           <a href="#fakultas">Fakultas &amp; Prodi</a>
           <a href="#berita">Berita</a>
-          <a href="api/pengumuman">Pengumuman</a>
+          <a href="#pengumuman">Pengumuman</a>
           <a href="#layanan">Layanan</a>
         </div>
       </div>
@@ -228,7 +229,7 @@
           <span class="hero-side-label">Kehidupan kampus</span>
           <h2>Tempat gagasan tumbuh menjadi karya.</h2>
           <p>Jelajahi informasi akademik, kegiatan, dan kabar kampus melalui portal ini.</p>
-          <a class="text-link" href="api/fakultas">Lihat informasi fakultas <span aria-hidden="true">→</span></a>
+          <a class="text-link" href="#fakultas">Lihat informasi fakultas <span aria-hidden="true">→</span></a>
         </aside>
       </div>
     </section>
@@ -239,15 +240,15 @@
           <span class="highlight-icon" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M5 4.75h14v15H5zM8 8h8M8 11.5h8M8 15h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           <span><strong>Berita</strong><span>Kabar kampus</span></span>
         </a>
-        <a class="highlight" href="api/fakultas">
+        <a class="highlight" href="#fakultas">
           <span class="highlight-icon" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M3.5 20h17M5.5 20V8l6.5-4 6.5 4v12M9 20v-5h6v5M9 10h.01M15 10h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           <span><strong>Fakultas</strong><span>Temukan bidang ilmu</span></span>
         </a>
-        <a class="highlight" href="api/program-studi">
+        <a class="highlight" href="#program-studi">
           <span class="highlight-icon" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="m3 9 9-5 9 5-9 5-9-5ZM6 11v5c3.5 3 8.5 3 12 0v-5M21 9v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           <span><strong>Program Studi</strong><span>Pilih masa depanmu</span></span>
         </a>
-        <a class="highlight" href="api/pengumuman">
+        <a class="highlight" href="#pengumuman">
           <span class="highlight-icon" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M6 4.5h12v15H6zM9 8h6M9 11.5h6M9 15h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           <span><strong>Pengumuman</strong><span>Info penting</span></span>
         </a>
@@ -258,7 +259,7 @@
       <div class="container">
         <div class="section-heading">
           <div><span class="kicker">Cerita dari kampus</span><h2>Kabar terbaru</h2></div>
-          <a class="text-link" href="api/berita">Semua berita <span aria-hidden="true">→</span></a>
+          <a class="text-link" href="#berita">Semua berita <span aria-hidden="true">→</span></a>
         </div>
         <div class="news-grid" id="news-grid" aria-live="polite">
           <p class="news-status">Memuat berita terbaru…</p>
@@ -270,24 +271,39 @@
       <div class="container">
         <div class="section-heading">
           <div><span class="kicker">Peluang untuk berkembang</span><h2>Temukan bidangmu</h2></div>
-          <a class="text-link" href="api/fakultas">Lihat fakultas <span aria-hidden="true">→</span></a>
+          <a class="text-link" href="#fakultas">Lihat fakultas <span aria-hidden="true">→</span></a>
         </div>
-        <div class="facts-grid">
-          <article class="fact-card"><span class="fact-index">01</span><h3>Fakultas</h3><p>Jelajahi lingkungan akademik dan bidang keilmuan yang tersedia.</p></article>
-          <article class="fact-card"><span class="fact-index">02</span><h3>Program Studi</h3><p>Temukan pilihan program studi sesuai minat dan rencana masa depan.</p></article>
-          <article class="fact-card"><span class="fact-index">03</span><h3>Berita Kampus</h3><p>Ikuti kabar, kegiatan, dan cerita terbaru dari civitas akademika.</p></article>
-          <article class="fact-card"><span class="fact-index">04</span><h3>Informasi</h3><p>Akses pengumuman dan informasi kampus dalam satu tempat.</p></article>
-        </div>
+        <div class="facts-grid" id="faculty-grid" aria-live="polite"></div>
         <div class="api-note" id="layanan">
-          Portal ini terhubung ke API kampus untuk menampilkan informasi. Jelajahi <a href="api/berita">berita</a>, <a href="api/fakultas">fakultas</a>, <a href="api/program-studi">program studi</a>, dan <a href="api/pengumuman">pengumuman</a>.
+          Informasi di portal ini tersedia langsung di halaman. Jelajahi <a href="#berita">berita</a>, <a href="#fakultas">fakultas</a>, <a href="#program-studi">program studi</a>, dan <a href="#pengumuman">pengumuman</a>.
         </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="program-studi">
+      <div class="container">
+        <div class="section-heading">
+          <div><span class="kicker">Pilihan akademik</span><h2>Program studi</h2></div>
+          <a class="text-link" href="#program-studi">Lihat program studi <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="facts-grid" id="program-grid" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="content-section facts" id="pengumuman">
+      <div class="container">
+        <div class="section-heading">
+          <div><span class="kicker">Informasi kampus</span><h2>Pengumuman</h2></div>
+          <a class="text-link" href="#pengumuman">Lihat pengumuman <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="facts-grid" id="announcement-grid" aria-live="polite"></div>
       </div>
     </section>
 
     <section class="container" style="padding-bottom: 65px">
       <div class="cta">
         <div><h2>Butuh informasi kampus?</h2><p>Temukan pengumuman dan berita kampus melalui portal informasi.</p></div>
-        <a class="button button-gold" href="api/pengumuman">Lihat pengumuman <span aria-hidden="true">→</span></a>
+        <a class="button button-gold" href="#pengumuman">Lihat pengumuman <span aria-hidden="true">→</span></a>
       </div>
     </section>
   </main>
@@ -302,7 +318,7 @@
         <a href="#tentang">Tentang</a>
         <a href="#fakultas">Fakultas</a>
         <a href="#berita">Berita</a>
-        <a href="api/pengumuman">Pengumuman</a>
+        <a href="#pengumuman">Pengumuman</a>
       </nav>
     </div>
     <div class="container">
@@ -311,11 +327,33 @@
   </footer>
 
   <script>
-    const basePath = window.location.pathname.endsWith('/')
-      ? window.location.pathname
-      : window.location.pathname.replace(/[^/]*$/, '');
-    const apiUrl = `${basePath}api/berita?per_page=3`;
-    const newsGrid = document.querySelector('#news-grid');
+    const baseUrl = new URL('.', window.location.href);
+    const fallbackData = {
+      berita: [{
+        id: 1,
+        judul: 'Selamat Datang di Portal Kampus',
+        slug: 'selamat-datang-di-portal-kampus',
+        ringkasan: 'Contoh berita untuk menguji API kampus.',
+        isi: 'Ini adalah konten contoh. Ganti dengan berita resmi kampus Anda.',
+        penulis: 'Admin Kampus',
+        diterbitkan_pada: '2026-10-21 00:00:00',
+      }],
+      fakultas: [
+        { id: 1, nama: 'Fakultas Ilmu Sosial', deskripsi: 'Contoh data fakultas. Ganti dengan informasi resmi kampus Anda.', dekan: 'Nama Dekan' },
+        { id: 2, nama: 'Fakultas Teknik', deskripsi: 'Contoh data fakultas. Ganti dengan informasi resmi kampus Anda.', dekan: 'Nama Dekan' },
+      ],
+      'program-studi': [
+        { id: 1, nama: 'Administrasi Publik', nama_fakultas: 'Fakultas Ilmu Sosial', jenjang: 'S1', akreditasi: 'Baik', deskripsi: 'Contoh data program studi. Ganti dengan informasi resmi kampus Anda.' },
+        { id: 2, nama: 'Teknik Informatika', nama_fakultas: 'Fakultas Teknik', jenjang: 'S1', akreditasi: 'Baik', deskripsi: 'Contoh data program studi. Ganti dengan informasi resmi kampus Anda.' },
+      ],
+      pengumuman: [{
+        id: 1,
+        judul: 'Informasi Penerimaan Mahasiswa Baru',
+        ringkasan: 'Contoh pengumuman untuk menguji API kampus.',
+        isi: 'Ini adalah konten contoh. Ganti dengan informasi resmi kampus Anda.',
+        diterbitkan_pada: '2026-10-21 00:00:00',
+      }],
+    };
 
     document.querySelector('.mobile-menu').addEventListener('click', event => {
       const button = event.currentTarget;
@@ -342,19 +380,10 @@
       return new Intl.DateTimeFormat('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }).format(date);
     }
 
-    fetch(apiUrl)
-      .then(async response => {
-        const payload = await response.json();
-        if (!response.ok) throw new Error(payload.error || 'Berita belum dapat dimuat.');
-        if (!Array.isArray(payload.data)) throw new Error('Format data berita tidak sesuai.');
-        return payload.data;
-      })
-      .then(news => {
-        if (news.length === 0) {
-          newsGrid.innerHTML = '<p class="news-status">Belum ada berita yang diterbitkan.</p>';
-          return;
-        }
-        newsGrid.innerHTML = news.map((item, index) => `
+    function renderNews(items) {
+      const grid = document.querySelector('#news-grid');
+      grid.innerHTML = items.length
+        ? items.slice(0, 3).map((item, index) => `
           <article class="news-card">
             <div class="news-art art-${['one', 'two', 'three'][index % 3]}">
               <span class="news-art-label">Berita kampus</span>
@@ -362,15 +391,59 @@
             <div class="news-body">
               <div class="news-meta">${escapeHtml(formatDate(item.diterbitkan_pada))}${item.penulis ? ` · ${escapeHtml(item.penulis)}` : ''}</div>
               <h3>${escapeHtml(item.judul)}</h3>
-              <p>${escapeHtml(item.ringkasan)}</p>
-              <a class="text-link" href="${basePath}api/berita/${encodeURIComponent(item.slug || item.id)}">Baca selengkapnya <span aria-hidden="true">→</span></a>
+              <p>${escapeHtml(item.ringkasan || item.isi || 'Informasi berita kampus.')}</p>
             </div>
           </article>
-        `).join('');
+        `).join('')
+        : '<p class="news-status">Belum ada berita yang diterbitkan.</p>';
+    }
+
+    function renderCards(selector, items, getDetails) {
+      const grid = document.querySelector(selector);
+      grid.innerHTML = items.length
+        ? items.map((item, index) => {
+          const details = getDetails(item);
+          return `
+            <article class="fact-card">
+              <span class="fact-index">${String(index + 1).padStart(2, '0')}</span>
+              ${details.meta ? `<div class="fact-meta">${escapeHtml(details.meta)}</div>` : ''}
+              <h3>${escapeHtml(details.title)}</h3>
+              <p>${escapeHtml(details.description)}</p>
+            </article>
+          `;
+        }).join('')
+        : '<p class="news-status">Informasi belum tersedia.</p>';
+    }
+
+    const renderers = {
+      berita: items => renderNews(items),
+      fakultas: items => renderCards('#faculty-grid', items, item => ({
+        title: item.nama,
+        meta: item.dekan ? `Dekan: ${item.dekan}` : '',
+        description: item.deskripsi || 'Informasi fakultas kampus.',
+      })),
+      'program-studi': items => renderCards('#program-grid', items, item => ({
+        title: item.nama,
+        meta: [item.jenjang, item.akreditasi].filter(Boolean).join(' · '),
+        description: [item.nama_fakultas, item.deskripsi].filter(Boolean).join(' — ') || 'Informasi program studi kampus.',
+      })),
+      pengumuman: items => renderCards('#announcement-grid', items, item => ({
+        title: item.judul,
+        meta: formatDate(item.diterbitkan_pada),
+        description: item.ringkasan || item.isi || 'Informasi pengumuman kampus.',
+      })),
+    };
+
+    Object.entries(renderers).forEach(([resource, render]) => render(fallbackData[resource]));
+    fetch(new URL('data/seed.json', baseUrl))
+      .then(response => response.ok ? response.json() : null)
+      .then(data => {
+        if (!data || typeof data !== 'object') return;
+        Object.entries(renderers).forEach(([resource, render]) => {
+          if (Array.isArray(data[resource])) render(data[resource]);
+        });
       })
-      .catch(error => {
-        newsGrid.innerHTML = `<p class="news-status error">${escapeHtml(error.message)}</p>`;
-      });
+      .catch(() => {});
   </script>
 </body>
 </html>
