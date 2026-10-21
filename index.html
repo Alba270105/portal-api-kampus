@@ -147,6 +147,7 @@
       .highlight { min-height: 78px; padding: 13px 10px; gap: 9px; }
       .highlight-icon { width: 33px; height: 33px; }
       .highlight strong { font-size: 17px; }
+      .highlight:last-child strong { font-size: 12px; }
       .highlight span { font-size: 9px; }
       .section-heading { align-items: start; flex-direction: column; }
       .news-grid { grid-template-columns: 1fr; }
@@ -157,6 +158,9 @@
       .cta { grid-template-columns: 1fr; padding: 25px 20px; }
       .cta .button { justify-self: start; }
       .footer-inner { align-items: start; flex-direction: column; }
+    }
+    @media (max-width: 360px) {
+      .utility-right a:last-child { display: none; }
     }
   </style>
 </head>
