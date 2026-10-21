@@ -3,68 +3,369 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Portal API kampus untuk berita, fakultas, program studi, dan pengumuman.">
-  <title>Portal API Kampus</title>
+  <meta name="theme-color" content="#0d2639">
+  <meta name="description" content="Jelajahi informasi Universitas Malikussaleh, kehidupan kampus, berita, fakultas, dan program studi.">
+  <title>Universitas Malikussaleh — Kampus untuk Masa Depan</title>
   <style>
     :root {
       color-scheme: light;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: #172033;
-      background: #f4f7fb;
+      font-family: "Segoe UI", Arial, sans-serif;
+      color: #152332;
+      background: #fff;
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
+      --ink: #142739;
+      --navy: #0d2639;
+      --green: #176b54;
+      --gold: #e8ba64;
+      --muted: #697783;
+      --line: #e7ebed;
+      --paper: #f4f6f3;
     }
     * { box-sizing: border-box; }
-    body { margin: 0; }
-    header { padding: 64px 24px 48px; color: #fff; background: linear-gradient(125deg, #123b67, #176b67); }
-    .wrap { width: min(960px, 100%); margin: 0 auto; }
-    .eyebrow { color: #b8e6d8; font-size: .8rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
-    h1 { margin: 12px 0; font-size: clamp(2rem, 5vw, 3.25rem); }
-    header p { max-width: 620px; margin: 0; color: #e4eff5; line-height: 1.7; }
-    main { padding: 36px 24px 64px; }
-    h2 { margin: 0 0 18px; font-size: 1.25rem; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; }
-    article { padding: 20px; border: 1px solid #e1e7ef; border-radius: 14px; background: #fff; box-shadow: 0 6px 20px #1720330a; }
-    article h3 { margin: 0 0 8px; }
-    article p { min-height: 44px; margin: 0 0 16px; color: #64748b; line-height: 1.5; }
-    a { color: #126a68; font-weight: 650; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    code { padding: 3px 6px; border-radius: 5px; color: #1d466d; background: #edf4fa; font-size: .9em; }
-    .note { margin-top: 24px; color: #64748b; font-size: .92rem; line-height: 1.7; }
-    footer { padding: 20px 24px; color: #64748b; text-align: center; font-size: .85rem; }
-    pre { overflow: auto; min-height: 44px; margin: 14px 0 0; padding: 14px; border-radius: 10px; color: #dce8f5; background: #172b45; font-size: .85rem; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; min-width: 320px; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .container { width: min(1180px, calc(100% - 48px)); margin-inline: auto; }
+    .utility { color: #d9e4e9; background: var(--navy); font-size: 12px; }
+    .utility-inner { display: flex; min-height: 38px; align-items: center; justify-content: space-between; gap: 18px; }
+    .utility-left, .utility-right { display: flex; align-items: center; gap: 19px; }
+    .utility a:hover { color: var(--gold); }
+    .utility-right a { color: #fff; font-weight: 700; }
+    .brand-row { display: flex; min-height: 102px; align-items: center; justify-content: space-between; gap: 25px; }
+    .brand { display: inline-flex; align-items: center; gap: 14px; }
+    .brand-mark { display: grid; width: 58px; aspect-ratio: 1; place-items: center; border: 2px solid #b28a48; border-radius: 50%; color: #d3ab67; font-family: Georgia, serif; font-size: 25px; font-weight: 700; letter-spacing: -.08em; }
+    .brand-title { display: block; color: var(--ink); font-family: Georgia, "Times New Roman", serif; font-size: clamp(17px, 2.4vw, 23px); font-weight: 700; letter-spacing: .035em; line-height: 1.15; }
+    .brand-subtitle { display: block; margin-top: 5px; color: #75808a; font-size: 10px; font-weight: 650; letter-spacing: .16em; }
+    .search { display: flex; width: min(270px, 32vw); align-items: center; gap: 9px; padding: 10px 13px; border: 1px solid var(--line); border-radius: 3px; color: #78838b; font-size: 13px; }
+    .search svg { flex: 0 0 auto; }
+    .main-nav { position: relative; z-index: 2; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: #fff; }
+    .nav-inner { display: flex; min-height: 53px; align-items: center; justify-content: space-between; gap: 14px; }
+    .nav-links { display: flex; flex-wrap: wrap; align-items: center; gap: clamp(13px, 2.1vw, 27px); }
+    .nav-links a { padding: 18px 0; color: #364753; font-size: 12px; font-weight: 750; letter-spacing: .025em; text-transform: uppercase; }
+    .nav-links a:hover { color: var(--green); }
+    .nav-links .active { color: var(--green); }
+    .mobile-menu { display: none; border: 0; color: var(--ink); background: none; font-size: 14px; font-weight: 700; }
+    .hero { position: relative; overflow: hidden; min-height: 465px; color: #fff; background: linear-gradient(110deg, #0d2639 0%, #174b4b 66%, #587248 100%); }
+    .hero::before, .hero::after { position: absolute; content: ""; pointer-events: none; }
+    .hero::before { top: -210px; right: -65px; width: min(730px, 63vw); aspect-ratio: 1; border: 1px solid #ffffff20; border-radius: 50%; box-shadow: 0 0 0 42px #ffffff0b, 0 0 0 88px #ffffff08, 0 0 0 140px #ffffff06; }
+    .hero::after { right: 8%; bottom: -180px; width: 48vw; height: 330px; transform: rotate(-15deg); border: 1px solid #ffffff1c; border-radius: 50%; }
+    .hero-inner { position: relative; z-index: 1; display: grid; min-height: 465px; grid-template-columns: minmax(0, 1.25fr) minmax(260px, .75fr); align-items: center; gap: 30px; padding-block: 56px; }
+    .hero-copy { max-width: 650px; }
+    .kicker { display: inline-flex; align-items: center; gap: 10px; color: #f2d69f; font-size: 11px; font-weight: 750; letter-spacing: .17em; text-transform: uppercase; }
+    .kicker::before { width: 28px; height: 2px; background: var(--gold); content: ""; }
+    .hero h1 { max-width: 700px; margin: 18px 0 17px; font-family: Georgia, "Times New Roman", serif; font-size: clamp(38px, 5.7vw, 68px); font-weight: 500; letter-spacing: -.035em; line-height: 1.04; }
+    .hero p { max-width: 540px; margin: 0; color: #e0e8e5; font-size: 15px; line-height: 1.8; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .button { display: inline-flex; min-height: 45px; align-items: center; justify-content: center; gap: 10px; padding: 0 18px; border: 1px solid transparent; border-radius: 3px; font-size: 12px; font-weight: 750; letter-spacing: .04em; transition: background .18s ease, color .18s ease, transform .18s ease; }
+    .button:hover { transform: translateY(-2px); }
+    .button-gold { color: #1e2c2b; background: var(--gold); }
+    .button-outline { border-color: #ffffff80; color: #fff; background: transparent; }
+    .hero-side { justify-self: end; width: min(320px, 100%); padding: 25px; border: 1px solid #ffffff2c; background: #ffffff0e; backdrop-filter: blur(5px); }
+    .hero-side-label { color: #f2d69f; font-size: 10px; font-weight: 750; letter-spacing: .14em; text-transform: uppercase; }
+    .hero-side h2 { margin: 12px 0 9px; font-family: Georgia, "Times New Roman", serif; font-size: 24px; font-weight: 500; line-height: 1.2; }
+    .hero-side p { color: #d9e3df; font-size: 13px; line-height: 1.65; }
+    .text-link { display: inline-flex; align-items: center; gap: 8px; color: var(--green); font-size: 12px; font-weight: 750; }
+    .hero-side .text-link { margin-top: 15px; color: #f2d69f; }
+    .highlights { position: relative; z-index: 1; margin-top: -1px; color: #fff; background: #154a43; }
+    .highlight-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .highlight { display: flex; min-width: 0; min-height: 91px; align-items: center; gap: 13px; padding: 18px 20px; border-right: 1px solid #ffffff23; }
+    .highlight:first-child { border-left: 1px solid #ffffff23; }
+    .highlight-icon { display: grid; width: 39px; height: 39px; flex: 0 0 auto; place-items: center; border: 1px solid #e8ba6470; border-radius: 50%; color: var(--gold); }
+    .highlight strong { display: block; font-family: Georgia, "Times New Roman", serif; font-size: 19px; font-weight: 600; }
+    .highlight span { display: block; margin-top: 4px; color: #d7e3dc; font-size: 10px; letter-spacing: .06em; text-transform: uppercase; }
+    section.content-section { padding-block: 76px; }
+    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 22px; margin-bottom: 27px; }
+    .section-heading .kicker { color: var(--green); }
+    .section-heading h2 { margin: 10px 0 0; color: var(--ink); font-family: Georgia, "Times New Roman", serif; font-size: clamp(28px, 3.6vw, 40px); font-weight: 500; letter-spacing: -.025em; }
+    .news-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+    .news-card { min-width: 0; border: 1px solid var(--line); background: #fff; }
+    .news-art { position: relative; display: flex; min-height: 175px; align-items: end; overflow: hidden; padding: 18px; color: #fff; background: linear-gradient(140deg, #28465a, #2d7564); }
+    .news-art::before, .news-art::after { position: absolute; content: ""; }
+    .news-art::before { top: -65px; right: -20px; width: 190px; height: 190px; border: 1px solid #ffffff55; border-radius: 50%; box-shadow: 0 0 0 19px #ffffff14, 0 0 0 42px #ffffff0d; }
+    .news-art::after { right: 23px; bottom: -116px; width: 200px; height: 180px; transform: rotate(18deg); border: 1px solid #ffffff48; border-radius: 45% 45% 0 0; background: #0d263942; }
+    .news-art.art-two { background: linear-gradient(140deg, #5b5039, #b28a48); }
+    .news-art.art-three { background: linear-gradient(140deg, #163b4f, #4f7356); }
+    .news-art-label { position: relative; z-index: 1; padding: 7px 10px; border: 1px solid #ffffff70; background: #0d263982; font-size: 9px; font-weight: 750; letter-spacing: .12em; text-transform: uppercase; }
+    .news-body { padding: 19px; }
+    .news-meta { color: #73808b; font-size: 10px; font-weight: 650; letter-spacing: .07em; text-transform: uppercase; }
+    .news-body h3 { margin: 10px 0 9px; color: var(--ink); font-family: Georgia, "Times New Roman", serif; font-size: 20px; font-weight: 600; line-height: 1.25; }
+    .news-body p { margin: 0 0 15px; color: var(--muted); font-size: 13px; line-height: 1.7; }
+    .news-status { padding-block: 24px; color: var(--muted); font-size: 13px; }
+    .news-status.error { color: #9a4538; }
+    .facts { background: var(--paper); }
+    .facts-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+    .fact-card { min-height: 162px; padding: 22px; border: 1px solid #e4e9e3; background: #fff; }
+    .fact-index { color: #a58045; font-family: Georgia, "Times New Roman", serif; font-size: 27px; }
+    .fact-card h3 { margin: 10px 0 6px; color: var(--ink); font-family: Georgia, "Times New Roman", serif; font-size: 18px; }
+    .fact-card p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.6; }
+    .api-note { margin-top: 26px; padding: 17px 19px; border-left: 3px solid var(--gold); color: #586671; background: #fff; font-size: 12px; line-height: 1.7; }
+    .api-note a { color: var(--green); font-weight: 700; }
+    .cta { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 22px; padding: 33px; color: #fff; background: var(--navy); }
+    .cta h2 { margin: 0 0 8px; font-family: Georgia, "Times New Roman", serif; font-size: 26px; font-weight: 500; }
+    .cta p { margin: 0; color: #cdd8df; font-size: 13px; line-height: 1.6; }
+    .footer { padding-block: 35px; color: #c5d0d6; background: #091b29; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .footer-brand { color: #fff; font-family: Georgia, "Times New Roman", serif; font-size: 17px; }
+    .footer p { margin: 7px 0 0; color: #9aabb5; font-size: 11px; line-height: 1.6; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 16px; font-size: 11px; }
+    .footer-links a:hover { color: var(--gold); }
+    .disclaimer { margin-top: 20px !important; padding-top: 15px; border-top: 1px solid #ffffff1c; }
+    @media (max-width: 800px) {
+      .container { width: min(calc(100% - 34px), 620px); }
+      .utility-left { gap: 11px; }
+      .brand-row { min-height: 84px; }
+      .search { width: auto; padding: 10px; }
+      .search span { display: none; }
+      .mobile-menu { display: inline-flex; align-items: center; gap: 8px; padding: 17px 0; }
+      .nav-inner { min-height: 49px; flex-wrap: wrap; }
+      .nav-links { display: none; width: 100%; padding-bottom: 12px; }
+      .main-nav.open .nav-links { display: grid; grid-template-columns: repeat(2, 1fr); }
+      .nav-links a { padding: 8px 0; }
+      .hero-inner { min-height: 420px; grid-template-columns: 1fr; padding-block: 55px; }
+      .hero-side { display: none; }
+      .highlight-grid { grid-template-columns: repeat(2, 1fr); }
+      .highlight:nth-child(3) { border-left: 1px solid #ffffff23; }
+      .highlight:nth-child(n + 3) { border-top: 1px solid #ffffff23; }
+      section.content-section { padding-block: 56px; }
+      .news-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .news-card:last-child { display: none; }
+      .facts-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 520px) {
+      .utility-inner { min-height: 34px; }
+      .utility-left span:nth-child(2) { display: none; }
+      .utility-right { gap: 11px; }
+      .brand-mark { width: 48px; font-size: 22px; }
+      .brand { gap: 10px; }
+      .brand-subtitle { font-size: 8px; }
+      .hero { min-height: 410px; }
+      .hero-inner { min-height: 410px; }
+      .hero h1 { font-size: 43px; }
+      .hero p { font-size: 14px; }
+      .highlight { min-height: 78px; padding: 13px 10px; gap: 9px; }
+      .highlight-icon { width: 33px; height: 33px; }
+      .highlight strong { font-size: 17px; }
+      .highlight span { font-size: 9px; }
+      .section-heading { align-items: start; flex-direction: column; }
+      .news-grid { grid-template-columns: 1fr; }
+      .news-card:last-child { display: block; }
+      .news-art { min-height: 145px; }
+      .facts-grid { gap: 10px; }
+      .fact-card { min-height: 150px; padding: 16px; }
+      .cta { grid-template-columns: 1fr; padding: 25px 20px; }
+      .cta .button { justify-self: start; }
+      .footer-inner { align-items: start; flex-direction: column; }
+    }
   </style>
 </head>
 <body>
-  <header>
-    <div class="wrap">
-      <div class="eyebrow">REST API · PHP · MySQL</div>
-      <h1>Portal API Kampus</h1>
-      <p>Data berita, fakultas, program studi, dan pengumuman dalam endpoint JSON yang bisa digunakan oleh aplikasi web maupun mobile.</p>
+  <div class="utility">
+    <div class="container utility-inner">
+      <div class="utility-left">
+        <span>Universitas Malikussaleh</span>
+        <span aria-hidden="true">|</span>
+        <span>Aceh Utara, Indonesia</span>
+      </div>
+      <div class="utility-right">
+        <a href="#fakultas">Akademik</a>
+        <a href="#berita">Berita</a>
+        <a href="api/pengumuman">Pengumuman</a>
+      </div>
     </div>
+  </div>
+
+  <header>
+    <div class="container brand-row">
+      <a class="brand" href="./" aria-label="Universitas Malikussaleh, beranda">
+        <span class="brand-mark" aria-hidden="true">U</span>
+        <span>
+          <span class="brand-title">UNIVERSITAS MALIKUSSALEH</span>
+          <span class="brand-subtitle">ACEH UTARA · INDONESIA</span>
+        </span>
+      </a>
+      <a class="search" href="api/berita" aria-label="Jelajahi informasi kampus">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8" stroke="currentColor" stroke-width="1.7"/><path d="m16 16 4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+        <span>Jelajahi informasi kampus</span>
+      </a>
+    </div>
+    <nav class="main-nav" aria-label="Navigasi utama">
+      <div class="container nav-inner">
+        <button class="mobile-menu" type="button" aria-expanded="false">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          Menu
+        </button>
+        <div class="nav-links">
+          <a class="active" href="./">Beranda</a>
+          <a href="#tentang">Tentang</a>
+          <a href="#fakultas">Fakultas &amp; Prodi</a>
+          <a href="#berita">Berita</a>
+          <a href="api/pengumuman">Pengumuman</a>
+          <a href="#layanan">Layanan</a>
+        </div>
+      </div>
+    </nav>
   </header>
-  <main class="wrap">
-    <h2>Endpoint publik</h2>
-    <section class="grid" aria-label="Daftar endpoint API">
-      <article><h3>Berita</h3><p>Daftar berita terbaru dan detail artikel.</p><a href="/api/berita">Buka /api/berita</a></article>
-      <article><h3>Fakultas</h3><p>Informasi fakultas yang sudah dipublikasikan.</p><a href="/api/fakultas">Buka /api/fakultas</a></article>
-      <article><h3>Program studi</h3><p>Program studi beserta nama fakultas.</p><a href="/api/program-studi">Buka /api/program-studi</a></article>
-      <article><h3>Pengumuman</h3><p>Pengumuman publik yang masih berlaku.</p><a href="/api/pengumuman">Buka /api/pengumuman</a></article>
+
+  <main>
+    <section class="hero" id="tentang">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <span class="kicker">Selamat datang di kampus kita</span>
+          <h1>Menumbuhkan ilmu, membuka masa depan.</h1>
+          <p>Kenali kehidupan akademik, kabar terbaru, dan beragam pilihan pendidikan di Universitas Malikussaleh, Aceh Utara.</p>
+          <div class="hero-actions">
+            <a class="button button-gold" href="#fakultas">Jelajahi kampus <span aria-hidden="true">↗</span></a>
+            <a class="button button-outline" href="#berita">Baca berita</a>
+          </div>
+        </div>
+        <aside class="hero-side">
+          <span class="hero-side-label">Kehidupan kampus</span>
+          <h2>Tempat gagasan tumbuh menjadi karya.</h2>
+          <p>Jelajahi informasi akademik, kegiatan, dan kabar kampus melalui portal ini.</p>
+          <a class="text-link" href="api/fakultas">Lihat informasi fakultas <span aria-hidden="true">→</span></a>
+        </aside>
+      </div>
     </section>
-    <p class="note">Contoh pencarian: <code>/api/program-studi?q=teknik</code>. Daftar mendukung <code>page</code> dan <code>per_page</code>. Respons disajikan sebagai JSON.</p>
-    <pre id="preview" aria-live="polite">Memuat berita terbaru…</pre>
+
+    <section class="highlights" aria-label="Jelajahi portal">
+      <div class="container highlight-grid">
+        <a class="highlight" href="#berita">
+          <span class="highlight-icon" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M5 4.75h14v15H5zM8 8h8M8 11.5h8M8 15h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span><strong>Berita</strong><span>Kabar kampus</span></span>
+        </a>
+        <a class="highlight" href="api/fakultas">
+          <span class="highlight-icon" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M3.5 20h17M5.5 20V8l6.5-4 6.5 4v12M9 20v-5h6v5M9 10h.01M15 10h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span><strong>Fakultas</strong><span>Temukan bidang ilmu</span></span>
+        </a>
+        <a class="highlight" href="api/program-studi">
+          <span class="highlight-icon" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="m3 9 9-5 9 5-9 5-9-5ZM6 11v5c3.5 3 8.5 3 12 0v-5M21 9v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span><strong>Program Studi</strong><span>Pilih masa depanmu</span></span>
+        </a>
+        <a class="highlight" href="api/pengumuman">
+          <span class="highlight-icon" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M6 4.5h12v15H6zM9 8h6M9 11.5h6M9 15h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span><strong>Pengumuman</strong><span>Info penting</span></span>
+        </a>
+      </div>
+    </section>
+
+    <section class="content-section" id="berita">
+      <div class="container">
+        <div class="section-heading">
+          <div><span class="kicker">Cerita dari kampus</span><h2>Kabar terbaru</h2></div>
+          <a class="text-link" href="api/berita">Semua berita <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="news-grid" id="news-grid" aria-live="polite">
+          <p class="news-status">Memuat berita terbaru…</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section facts" id="fakultas">
+      <div class="container">
+        <div class="section-heading">
+          <div><span class="kicker">Peluang untuk berkembang</span><h2>Temukan bidangmu</h2></div>
+          <a class="text-link" href="api/fakultas">Lihat fakultas <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="facts-grid">
+          <article class="fact-card"><span class="fact-index">01</span><h3>Fakultas</h3><p>Jelajahi lingkungan akademik dan bidang keilmuan yang tersedia.</p></article>
+          <article class="fact-card"><span class="fact-index">02</span><h3>Program Studi</h3><p>Temukan pilihan program studi sesuai minat dan rencana masa depan.</p></article>
+          <article class="fact-card"><span class="fact-index">03</span><h3>Berita Kampus</h3><p>Ikuti kabar, kegiatan, dan cerita terbaru dari civitas akademika.</p></article>
+          <article class="fact-card"><span class="fact-index">04</span><h3>Informasi</h3><p>Akses pengumuman dan informasi kampus dalam satu tempat.</p></article>
+        </div>
+        <div class="api-note" id="layanan">
+          Portal ini terhubung ke API kampus untuk menampilkan informasi. Jelajahi <a href="api/berita">berita</a>, <a href="api/fakultas">fakultas</a>, <a href="api/program-studi">program studi</a>, dan <a href="api/pengumuman">pengumuman</a>.
+        </div>
+      </div>
+    </section>
+
+    <section class="container" style="padding-bottom: 65px">
+      <div class="cta">
+        <div><h2>Butuh informasi kampus?</h2><p>Temukan pengumuman dan berita kampus melalui portal informasi.</p></div>
+        <a class="button button-gold" href="api/pengumuman">Lihat pengumuman <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
   </main>
-  <footer>API baca-publik · Isi database contoh perlu diganti sebelum dipublikasikan.</footer>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <div class="footer-brand">Universitas Malikussaleh</div>
+        <p>Aceh Utara, Indonesia</p>
+      </div>
+      <nav class="footer-links" aria-label="Tautan footer">
+        <a href="#tentang">Tentang</a>
+        <a href="#fakultas">Fakultas</a>
+        <a href="#berita">Berita</a>
+        <a href="api/pengumuman">Pengumuman</a>
+      </nav>
+    </div>
+    <div class="container">
+      <p class="disclaimer">Demo portal independen untuk pembelajaran. Bukan situs resmi Universitas Malikussaleh. Informasi di dalamnya adalah data contoh dan perlu diverifikasi sebelum digunakan.</p>
+    </div>
+  </footer>
+
   <script>
-    fetch('/api/berita?per_page=3')
+    const basePath = window.location.pathname.endsWith('/')
+      ? window.location.pathname
+      : window.location.pathname.replace(/[^/]*$/, '');
+    const apiUrl = `${basePath}api/berita?per_page=3`;
+    const newsGrid = document.querySelector('#news-grid');
+
+    document.querySelector('.mobile-menu').addEventListener('click', event => {
+      const button = event.currentTarget;
+      const navigation = document.querySelector('.main-nav');
+      const isOpen = button.getAttribute('aria-expanded') === 'true';
+      button.setAttribute('aria-expanded', String(!isOpen));
+      navigation.classList.toggle('open', !isOpen);
+    });
+
+    function escapeHtml(value) {
+      return String(value ?? '').replace(/[&<>"']/g, character => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;',
+      })[character]);
+    }
+
+    function formatDate(value) {
+      if (!value) return 'Berita kampus';
+      const date = new Date(String(value).replace(' ', 'T'));
+      if (Number.isNaN(date.getTime())) return 'Berita kampus';
+      return new Intl.DateTimeFormat('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }).format(date);
+    }
+
+    fetch(apiUrl)
       .then(async response => {
         const payload = await response.json();
-        if (!response.ok) throw new Error(payload.error || 'Gagal memuat berita');
-        return payload;
+        if (!response.ok) throw new Error(payload.error || 'Berita belum dapat dimuat.');
+        if (!Array.isArray(payload.data)) throw new Error('Format data berita tidak sesuai.');
+        return payload.data;
       })
-      .then(payload => {
-        document.querySelector('#preview').textContent = JSON.stringify(payload, null, 2);
+      .then(news => {
+        if (news.length === 0) {
+          newsGrid.innerHTML = '<p class="news-status">Belum ada berita yang diterbitkan.</p>';
+          return;
+        }
+        newsGrid.innerHTML = news.map((item, index) => `
+          <article class="news-card">
+            <div class="news-art art-${['one', 'two', 'three'][index % 3]}">
+              <span class="news-art-label">Berita kampus</span>
+            </div>
+            <div class="news-body">
+              <div class="news-meta">${escapeHtml(formatDate(item.diterbitkan_pada))}${item.penulis ? ` · ${escapeHtml(item.penulis)}` : ''}</div>
+              <h3>${escapeHtml(item.judul)}</h3>
+              <p>${escapeHtml(item.ringkasan)}</p>
+              <a class="text-link" href="${basePath}api/berita/${encodeURIComponent(item.slug || item.id)}">Baca selengkapnya <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+        `).join('');
       })
       .catch(error => {
-        document.querySelector('#preview').textContent = error.message;
+        newsGrid.innerHTML = `<p class="news-status error">${escapeHtml(error.message)}</p>`;
       });
   </script>
 </body>
