@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Portal API kampus untuk berita, fakultas, program studi, dan pengumuman.">
+  <title>Portal API Kampus</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #172033;
+      background: #f4f7fb;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    header { padding: 64px 24px 48px; color: #fff; background: linear-gradient(125deg, #123b67, #176b67); }
+    .wrap { width: min(960px, 100%); margin: 0 auto; }
+    .eyebrow { color: #b8e6d8; font-size: .8rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    h1 { margin: 12px 0; font-size: clamp(2rem, 5vw, 3.25rem); }
+    header p { max-width: 620px; margin: 0; color: #e4eff5; line-height: 1.7; }
+    main { padding: 36px 24px 64px; }
+    h2 { margin: 0 0 18px; font-size: 1.25rem; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; }
+    article { padding: 20px; border: 1px solid #e1e7ef; border-radius: 14px; background: #fff; box-shadow: 0 6px 20px #1720330a; }
+    article h3 { margin: 0 0 8px; }
+    article p { min-height: 44px; margin: 0 0 16px; color: #64748b; line-height: 1.5; }
+    a { color: #126a68; font-weight: 650; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code { padding: 3px 6px; border-radius: 5px; color: #1d466d; background: #edf4fa; font-size: .9em; }
+    .note { margin-top: 24px; color: #64748b; font-size: .92rem; line-height: 1.7; }
+    footer { padding: 20px 24px; color: #64748b; text-align: center; font-size: .85rem; }
+    pre { overflow: auto; min-height: 44px; margin: 14px 0 0; padding: 14px; border-radius: 10px; color: #dce8f5; background: #172b45; font-size: .85rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="eyebrow">REST API · PHP · MySQL</div>
+      <h1>Portal API Kampus</h1>
+      <p>Data berita, fakultas, program studi, dan pengumuman dalam endpoint JSON yang bisa digunakan oleh aplikasi web maupun mobile.</p>
+    </div>
+  </header>
+  <main class="wrap">
+    <h2>Endpoint publik</h2>
+    <section class="grid" aria-label="Daftar endpoint API">
+      <article><h3>Berita</h3><p>Daftar berita terbaru dan detail artikel.</p><a href="/api/berita">Buka /api/berita</a></article>
+      <article><h3>Fakultas</h3><p>Informasi fakultas yang sudah dipublikasikan.</p><a href="/api/fakultas">Buka /api/fakultas</a></article>
+      <article><h3>Program studi</h3><p>Program studi beserta nama fakultas.</p><a href="/api/program-studi">Buka /api/program-studi</a></article>
+      <article><h3>Pengumuman</h3><p>Pengumuman publik yang masih berlaku.</p><a href="/api/pengumuman">Buka /api/pengumuman</a></article>
+    </section>
+    <p class="note">Contoh pencarian: <code>/api/program-studi?q=teknik</code>. Daftar mendukung <code>page</code> dan <code>per_page</code>. Respons disajikan sebagai JSON.</p>
+    <pre id="preview" aria-live="polite">Memuat berita terbaru…</pre>
+  </main>
+  <footer>API baca-publik · Isi database contoh perlu diganti sebelum dipublikasikan.</footer>
+  <script>
+    fetch('/api/berita?per_page=3')
+      .then(async response => {
+        const payload = await response.json();
+        if (!response.ok) throw new Error(payload.error || 'Gagal memuat berita');
+        return payload;
+      })
+      .then(payload => {
+        document.querySelector('#preview').textContent = JSON.stringify(payload, null, 2);
+      })
+      .catch(error => {
+        document.querySelector('#preview').textContent = error.message;
+      });
+  </script>
+</body>
+</html>
