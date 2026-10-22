@@ -93,14 +93,15 @@
     .news-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
     .news-card { min-width: 0; border: 1px solid var(--line); background: #fff; }
     .news-art { position: relative; display: flex; min-height: 175px; align-items: end; overflow: hidden; padding: 18px; color: #fff; background: linear-gradient(140deg, #28465a, #2d7564); }
+    .news-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
     .news-art::before, .news-art::after { position: absolute; content: ""; }
-    .news-art::before { top: -65px; right: -20px; width: 190px; height: 190px; border: 1px solid #ffffff55; border-radius: 50%; box-shadow: 0 0 0 19px #ffffff14, 0 0 0 42px #ffffff0d; }
-    .news-art::after { right: 23px; bottom: -116px; width: 200px; height: 180px; transform: rotate(18deg); border: 1px solid #ffffff48; border-radius: 45% 45% 0 0; background: #0d263942; }
+    .news-art::before { z-index: 1; top: -65px; right: -20px; width: 190px; height: 190px; border: 1px solid #ffffff55; border-radius: 50%; box-shadow: 0 0 0 19px #ffffff14, 0 0 0 42px #ffffff0d; }
+    .news-art::after { z-index: 1; right: 23px; bottom: -116px; width: 200px; height: 180px; transform: rotate(18deg); border: 1px solid #ffffff48; border-radius: 45% 45% 0 0; background: #0d263942; }
     .news-art.art-two { background: linear-gradient(140deg, #5b5039, #b28a48); }
     .news-art.art-three { background: linear-gradient(140deg, #163b4f, #4f7356); }
-    .news-art-mark { position: absolute; top: 50%; left: 50%; z-index: 1; display: grid; width: 58px; height: 58px; place-items: center; transform: translate(-50%, -50%); border: 1px solid #ffffff70; border-radius: 50%; color: #fff; background: #ffffff17; }
+    .news-art-mark { position: absolute; top: 50%; left: 50%; z-index: 2; display: grid; width: 58px; height: 58px; place-items: center; transform: translate(-50%, -50%); border: 1px solid #ffffff70; border-radius: 50%; color: #fff; background: #ffffff17; }
     .news-art-mark svg { width: 27px; height: 27px; }
-    .news-art-label { position: relative; z-index: 1; max-width: 100%; padding: 7px 10px; border: 1px solid #ffffff70; background: #0d2639b8; font-size: 9px; font-weight: 750; letter-spacing: .1em; line-height: 1.4; text-transform: uppercase; }
+    .news-art-label { position: relative; z-index: 2; max-width: 100%; padding: 7px 10px; border: 1px solid #ffffff70; background: #0d2639b8; font-size: 9px; font-weight: 750; letter-spacing: .1em; line-height: 1.4; text-transform: uppercase; }
     .news-body { padding: 19px; }
     .news-meta { color: #73808b; font-size: 10px; font-weight: 650; letter-spacing: .07em; text-transform: uppercase; }
     .news-body h3 { margin: 10px 0 9px; color: var(--ink); font-family: Georgia, "Times New Roman", serif; font-size: 20px; font-weight: 600; line-height: 1.25; }
@@ -321,6 +322,7 @@
         <div class="news-grid">
           <article class="news-card">
             <div class="news-art art-one">
+              <img class="news-image" src="https://unimal.ac.id/images/Berita-Wisuda/Sesi_wisuda.png" alt="Suasana wisuda Universitas Malikussaleh" loading="lazy">
               <span class="news-art-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 4.75h14v15H5zM8 8h8M8 11.5h8M8 15h5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
               <span class="news-art-label">Wisuda · 23 September 2026</span>
             </div>
@@ -328,6 +330,7 @@
           </article>
           <article class="news-card">
             <div class="news-art art-two">
+              <img class="news-image" src="https://unimal.ac.id/images/Beasiswa/penerima_beasiswa_KIP_dan_ADiK.png" alt="Informasi beasiswa KIP Kuliah dan ADik Universitas Malikussaleh" loading="lazy">
               <span class="news-art-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 4.75h14v15H5zM8 8h8M8 11.5h8M8 15h5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
               <span class="news-art-label">Beasiswa · 9 September 2026</span>
             </div>
@@ -335,6 +338,7 @@
           </article>
           <article class="news-card">
             <div class="news-art art-three">
+              <img class="news-image" src="https://unimal.ac.id/images/Berita-Wisuda/Wisuda_39.png" alt="Wisuda angkatan XXXIX Universitas Malikussaleh" loading="lazy">
               <span class="news-art-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 4.75h14v15H5zM8 8h8M8 11.5h8M8 15h5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
               <span class="news-art-label">Wisuda · 27 Agustus 2026</span>
             </div>
