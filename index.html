@@ -34,10 +34,8 @@
     .utility a:hover { color: var(--gold); }
     .utility-right a { color: #fff; font-weight: 700; }
     .brand-row { display: flex; min-height: 102px; align-items: center; justify-content: space-between; gap: 25px; }
-    .brand { display: inline-flex; align-items: center; gap: 14px; }
-    .brand-mark { display: grid; width: 58px; aspect-ratio: 1; place-items: center; border: 2px solid #b28a48; border-radius: 50%; color: #d3ab67; font-family: Georgia, serif; font-size: 25px; font-weight: 700; letter-spacing: -.08em; }
-    .brand-title { display: block; color: var(--ink); font-family: Georgia, "Times New Roman", serif; font-size: clamp(17px, 2.4vw, 23px); font-weight: 700; letter-spacing: .035em; line-height: 1.15; }
-    .brand-subtitle { display: block; margin-top: 5px; color: #75808a; font-size: 10px; font-weight: 650; letter-spacing: .16em; }
+    .brand { display: inline-flex; align-items: center; }
+    .brand-logo { display: block; width: 220px; max-width: 56vw; height: auto; }
     .search { display: flex; width: min(270px, 32vw); align-items: center; gap: 9px; padding: 10px 13px; border: 1px solid var(--line); border-radius: 3px; color: #78838b; font-size: 13px; }
     .search svg { flex: 0 0 auto; }
     .main-nav { position: relative; z-index: 2; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: #fff; }
@@ -145,9 +143,6 @@
       .utility-inner { min-height: 34px; }
       .utility-left span:nth-child(2) { display: none; }
       .utility-right { gap: 11px; }
-      .brand-mark { width: 48px; font-size: 22px; }
-      .brand { gap: 10px; }
-      .brand-subtitle { font-size: 8px; }
       .hero { min-height: 410px; }
       .hero-inner { min-height: 410px; }
       .hero h1 { font-size: 43px; }
@@ -191,11 +186,7 @@
   <header>
     <div class="container brand-row">
       <a class="brand" href="./" aria-label="Universitas Malikussaleh, beranda">
-        <span class="brand-mark" aria-hidden="true">U</span>
-        <span>
-          <span class="brand-title">UNIVERSITAS MALIKUSSALEH</span>
-          <span class="brand-subtitle">KAMPUS INKLUSIF DAN PRO PERUBAHAN</span>
-        </span>
+        <img class="brand-logo" src="assets/logo-unimal.png" alt="Universitas Malikussaleh">
       </a>
       <a class="search" href="#berita" aria-label="Jelajahi informasi kampus">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8" stroke="currentColor" stroke-width="1.7"/><path d="m16 16 4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
